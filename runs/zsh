@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# Script to install Oh My Zsh for the current user on Arch Linux
+
+# Make sure we're not running as root
+if [ "$(id -u)" -eq 0 ]; then
+  echo "This script should NOT be run as root!"
+  exit 1
+fi
+
+# Install zsh if not already installed
+if ! command -v zsh &> /dev/null; then
+  echo "Installing zsh..."
+  sudo pacman -Sy --noconfirm zsh
+else
+  echo "zsh is already installed"
+fi
+
+# Set zsh as the default shell for the current user
+if [ "$SHELL" != "$(which zsh)" ]; then
+  echo "Changing shell to zsh for current user: $USER"
+  sudo chsh -s "$(which zsh)" "$USER"
+  echo "Shell changed to zsh"
+else
+  echo "zsh is already the default shell"
+fi
+
+# Install Oh My Zsh manually by directly cloning the repository
+echo "Installing Oh My Zsh for $USER..."
+
+# Remove existing installation if it exists
+if [ -d "$HOME/.oh-my-zsh" ]; then
+  echo "Removing existing Oh My Zsh installation..."
+  rm -rf "$HOME/.oh-my-zsh"
+fi
+
+# Clone the repository to the user's home directory
+git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+
+# Create a new .zshrc file or backup the existing one
+if [ -f "$HOME/.zshrc" ]; then
+  echo "Backing up existing .zshrc to .zshrc.backup..."
+  cp "$HOME/.zshrc" "$HOME/.zshrc.backup"
+fi
+
+# Copy the template .zshrc file
+cp "$HOME/.oh-my-zsh/templates/zshrc.zsh-template" "$HOME/.zshrc"
+
+echo "Oh My Zsh installation complete!"
+echo "Please log out and log back in for the shell change to take effect"
