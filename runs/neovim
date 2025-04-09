@@ -31,3 +31,8 @@ git checkout harpoon2
 sudo pacman -S --noconfirm luarocks
 
 sudo luarocks install luacheck
+
+# Kickstart NeoVIM
+sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
+
+git clone https://github.com/Logan-Ruf/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim

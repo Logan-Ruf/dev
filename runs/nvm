@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Script to install NVM (Node Version Manager) on Arch Linux
+# Created on April 9, 2025
+
+echo "Starting NVM installation on Arch Linux..."
+
+# Check if curl is installed, install if not
+if ! command -v curl &> /dev/null; then
+    echo "curl not found, installing..."
+    sudo pacman -S --noconfirm curl
+fi
+
+# Check if git is installed, install if not
+if ! command -v git &> /dev/null; then
+    echo "git not found, installing..."
+    sudo pacman -S --noconfirm git
+fi
+
+# Create .nvm directory if it doesn't exist
+mkdir -p "$HOME/.nvm"
+
+# Install NVM
+echo "Downloading and installing NVM..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Source NVM in current shell
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Verify installation
+if command -v nvm &> /dev/null; then
+    echo "NVM has been successfully installed!"
+    echo "Current version: $(nvm --version)"
+    
+    # Add instructions for the user
+    echo -e "\nTo install the latest LTS version of Node.js, run:"
+    echo "nvm install --lts"
+    echo -e "\nTo list available Node.js versions:"
+    echo "nvm ls-remote"
+else
+    echo "NVM installation failed. Please check for errors above."
+    echo "You might need to restart your terminal or run: source ~/.bashrc"
+fi
+
+echo -e "\nNVM installation script completed."
+
+nvm install lts
+nvm use lts
+
+npm install -g typescript typescript-language-server @vue/language-server
