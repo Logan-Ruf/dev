@@ -3,3 +3,4 @@
 git config --global user.email "lruf@precisiontax.com"
 git config --global user.name "Logan Ruf"
 git config --global init.defaultBranch "main"
+git config --global core.editor "nvim -f"
