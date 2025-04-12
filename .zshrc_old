@@ -1,0 +1,52 @@
+#aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias p="python3.8"
+alias get_ip="curl ipecho.net/plain ; echo"
+alias gc="git commit -m"
+alias gco="git checkout"
+alias gs="git status"
+alias ga="git add"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gba="git branch -a"
+alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(bold yellow)%h%C(reset) - %C(green)(%ar)%C(reset)%C(bold white) %s%C(reset) %C(dim     white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias up="docker-compose up -d"
+alias down="docker-compose down"
+alias dc="docker-compose"
+alias build="docker-compose up -d --build"
+alias dcdb="docker-compose exec django bash"
+alias dcdl="docker-compose logs -f django"
+alias dcl="docker-compose logs -f"
+alias dcr="docker-compose restart"
+alias dcrd="docker-compose restart django"
+alias drr="down && up && sleep 5 && ./reset_db.sh"
+alias su="docker-compose exec django python manage.py show_urls"
+alias sp="docker-compose exec django python manage.py shell_plus"
+alias mm="docker-compose exec django python manage.py makemigrations"
+alias sm="docker-compose exec django python manage.py showmigrations"
+alias gen="docker-compose exec django python manage.py generate_data"
+alias mi="docker-compose exec django python manage.py migrate"
+alias cs="docker-compose exec django python manage.py collectstatic --no-input"
+alias f8="docker-compose exec django flake8"
+alias pt="docker-compose exec django py.test"
+alias pm="docker-compose exec django python manage.py"
+alias wdcdb="docker-compose exec web bash"
+alias wdcdl="docker-compose logs -f web"
+
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+
+#ENV
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
