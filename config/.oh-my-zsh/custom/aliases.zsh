@@ -1,0 +1,7 @@
+alias dc="docker-compose"
+alias dcu="docker-compose up -d"
+alias dcr="docker-compose restart"
+alias dcb="docker-compose down && docker-compose build"
+alias dcdb="docker-compose exec django bash"
+alias makemigrations="docker-compose exec django python manage.py makemigrations"
+alias migrate="docker-compose exec django python manage.py migrate"
