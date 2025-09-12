@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Script to fix locale issues on Arch Linux (especially WSL)
+# Fixes "unsupported locale setting" errors
+
+echo "Setting up locale configuration..."
+
+# Uncomment en_US.UTF-8 in locale.gen
+echo "Configuring locale.gen..."
+sudo sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+
+# Generate the locale
+echo "Generating locales..."
+sudo locale-gen
+
+# Set the default system locale
+echo "Setting system locale to en_US.UTF-8..."
+echo "LANG=en_US.UTF-8" | sudo tee /etc/locale.conf > /dev/null
+
+# Set locale with localectl if available (might not work in WSL)
+if command -v localectl &> /dev/null; then
+    sudo localectl set-locale LANG=en_US.UTF-8 2>/dev/null || true
+fi
+
+# Add locale exports to .zshrc if not already present
+if ! grep -q "export LANG=en_US.UTF-8" "$HOME/.zshrc" 2>/dev/null; then
+    echo "Adding locale exports to .zshrc..."
+    cat >> "$HOME/.zshrc" << 'EOL'
+
+# Locale settings
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+EOL
+else
+    echo "Locale exports already in .zshrc"
+fi
+
+# Also add to .bashrc in case bash is used
+if [ -f "$HOME/.bashrc" ]; then
+    if ! grep -q "export LANG=en_US.UTF-8" "$HOME/.bashrc" 2>/dev/null; then
+        echo "Adding locale exports to .bashrc..."
+        cat >> "$HOME/.bashrc" << 'EOL'
+
+# Locale settings
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+EOL
+    fi
+fi
+
+echo "Locale configuration complete!"
+echo "Current locale settings:"
+locale 2>/dev/null || true
+
+echo -e "\nPlease run 'source ~/.zshrc' or restart your shell for changes to take effect."
