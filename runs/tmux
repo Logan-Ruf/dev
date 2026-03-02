@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 sudo pacman -Syy --noconfirm tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "Make sure to use [LEADER] + I to install tmux plugins"
 
