@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syy --noconfirm pyenv
+pyenv install 3.12.12
+pyenv global 3.12.12
