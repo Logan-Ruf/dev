@@ -15,3 +15,5 @@ if ! command -v git &> /dev/null; then
 fi
 
 curl -fsSL https://claude.ai/install.sh | bash
+
+claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
