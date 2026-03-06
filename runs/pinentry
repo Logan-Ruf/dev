@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syy --noconfirm pinentry
+rm -f ~/.gnupg/gpg-agent.conf
+echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
