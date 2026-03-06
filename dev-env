@@ -51,4 +51,5 @@ log "--------- dev-env ---------"
 copy_file ./config/.tmux.conf $HOME
 copy_file ./config/.oh-my-zsh/custom/aliases.zsh $HOME/.oh-my-zsh/custom
 copy_file ./config/.zshrc $HOME
-source ~/.zshrc
+
+echo "You might want to run:\nsource ~/.zshrc"

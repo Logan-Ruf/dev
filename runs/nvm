@@ -46,7 +46,7 @@ fi
 
 echo -e "\nNVM installation script completed."
 
-nvm install lts
-nvm use lts
+nvm install --lts
+nvm use --lts
 
 npm install -g typescript typescript-language-server @vue/language-server

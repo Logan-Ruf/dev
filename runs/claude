@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Starting Claude Code installation..."
+
+# Check if curl is installed, install if not
+if ! command -v curl &> /dev/null; then
+    echo "curl not found, installing..."
+    sudo pacman -S --noconfirm curl
+fi
+
+# Check if git is installed, install if not
+if ! command -v git &> /dev/null; then
+    echo "git not found, installing..."
+    sudo pacman -S --noconfirm git
+fi
+
+curl -fsSL https://claude.ai/install.sh | bash
