@@ -16,6 +16,14 @@ else
   echo "zsh is already installed"
 fi
 
+# Install ripgrep if not already installed
+if ! command -v rg &> /dev/null; then
+  echo "Installing ripgrep..."
+  sudo pacman -Sy --noconfirm ripgrep
+else
+  echo "ripgrep is already installed"
+fi
+
 # Set zsh as the default shell for the current user
 if [ "$SHELL" != "$(which zsh)" ]; then
   echo "Changing shell to zsh for current user: $USER"
