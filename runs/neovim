@@ -9,7 +9,7 @@ echo "version: \"$version\""
 
 # neovim btw
 if [ ! -d $HOME/neovim ]; then
-    git clone https://github.com/neovim/neovim.git $HOME/neovim
+    git clone git@github.com:Logan-Ruf/kickstart.nvim.git $HOME/neovim
 fi
 
 sudo pacman -S --noconfirm base-devel cmake unzip ninja gettext git
