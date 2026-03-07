@@ -74,8 +74,8 @@ ZSH_THEME="robbyrussell"
 plugins=(git sudo ssh-agent alias-finder rust)
 
 # Plugin Options
-## alias-finder
 zstyle ':omz:plugins:alias-finder' autoload yes
+zstyle ':omz:plugins:alias-finder' cheaper yes  # Avoid aliases where the recommendation is longer than the input
 
 source $ZSH/oh-my-zsh.sh
 
