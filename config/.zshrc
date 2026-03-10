@@ -81,6 +81,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Custom Plugin to open WSL path in windows explorer
+open() { explorer.exe "${1:-.}"; }
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
