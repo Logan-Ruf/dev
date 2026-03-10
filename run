@@ -33,6 +33,12 @@ execute() {
     "$@"
 }
 
+read -p "Git name [Logan Ruf]: " git_name
+export GIT_USER_NAME="${git_name:-Logan Ruf}"
+
+read -p "Git email [laython1316@gmail.com]: " git_email
+export GIT_USER_EMAIL="${git_email:-laython1316@gmail.com}"
+
 log "run: filter=$filter"
 
 for script in $scripts; do
