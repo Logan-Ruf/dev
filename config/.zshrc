@@ -71,7 +71,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo ssh-agent alias-finder rust)
+plugins=(
+  git
+  sudo
+  ssh-agent
+  gpg-agent
+  alias-finder
+  rust
+)
 
 # Plugin Options
 zstyle ':omz:plugins:alias-finder' autoload yes

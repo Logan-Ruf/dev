@@ -20,6 +20,14 @@ You will be prompted for your git name and email (defaults to the repo owner's c
 ./run --dry neovim       # dry-run the neovim script
 ```
 
+## Syncing Config Files
+
+```bash
+./dev-env
+```
+
+Copies dotfiles (`.tmux.conf`, `.zshrc`, oh-my-zsh aliases) from `config/` to your home directory. Supports `--dry` for a preview.
+
 ## Scripts
 
 The `runs/` directory contains individual setup scripts:
