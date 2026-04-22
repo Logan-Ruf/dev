@@ -4,3 +4,7 @@ sudo pacman -S --noconfirm curl
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 rustup install nightly
+
+# tree-sitter-cli: required by nvim-treesitter `main` branch to compile parsers
+source "$HOME/.cargo/env"
+cargo install tree-sitter-cli
